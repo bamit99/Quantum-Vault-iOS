@@ -11,6 +11,7 @@
 		4B4BD27A80A8F0CB0AB1FBC3 /* QuantumVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF0367AB9A0E65828906935 /* QuantumVaultApp.swift */; };
 		59827663B137EA1C50E2BACC /* QVaultCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = C71B0A687B5639909C0C4FD4 /* QVaultCrypto */; };
 		6164B42CD56167910868A715 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1A7BBE82360C41A8D4BDF /* ContentView.swift */; };
+		6BFAB3A4B7F5E0885EE9443C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89AFF12A5506CC0C147E3268 /* Assets.xcassets */; };
 		9791364D918866C085C114F7 /* BiometricGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83059344132AF478816CB199 /* BiometricGate.swift */; };
 		E6C7E421B529597E5323DE8D /* VaultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8D72C480400987D699D18 /* VaultModel.swift */; };
 /* End PBXBuildFile section */
@@ -19,6 +20,7 @@
 		3FA8D72C480400987D699D18 /* VaultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultModel.swift; sourceTree = "<group>"; };
 		48B8BC14D34D6D4B4E33CFD2 /* QuantumVault.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = QuantumVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83059344132AF478816CB199 /* BiometricGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricGate.swift; sourceTree = "<group>"; };
+		89AFF12A5506CC0C147E3268 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B412CEAE348119161632F2B2 /* QuantumVault-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "QuantumVault-iOS"; path = ..; sourceTree = SOURCE_ROOT; };
 		BDF0367AB9A0E65828906935 /* QuantumVaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumVaultApp.swift; sourceTree = "<group>"; };
 		BFF1A7BBE82360C41A8D4BDF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		30C115E19BE3C223CF102AE4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				89AFF12A5506CC0C147E3268 /* Assets.xcassets */,
 				83059344132AF478816CB199 /* BiometricGate.swift */,
 				BFF1A7BBE82360C41A8D4BDF /* ContentView.swift */,
 				F9DE0EDFD82C20E2F55F7CDA /* Info.plist */,
@@ -84,6 +87,7 @@
 			buildConfigurationList = DF7CF512D9109773BF82F7CD /* Build configuration list for PBXNativeTarget "QuantumVault" */;
 			buildPhases = (
 				CFFB5CDBD436C91FD1FA615D /* Sources */,
+				C5171A59F7817C3BBE63A30E /* Resources */,
 				514C8D17B72F36CA72AF4490 /* Frameworks */,
 			);
 			buildRules = (
@@ -131,6 +135,17 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		C5171A59F7817C3BBE63A30E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BFAB3A4B7F5E0885EE9443C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CFFB5CDBD436C91FD1FA615D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -167,6 +182,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -231,6 +247,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
