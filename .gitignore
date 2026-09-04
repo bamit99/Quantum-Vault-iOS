@@ -1,0 +1,15 @@
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+xcuserdata/
+
+
+# macOS
+.DS_Store
+
+# Java test-vector build artifacts (regenerate with javac, see Tests/)
+*.class
+
+# Misc
+*.log

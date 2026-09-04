@@ -1,0 +1,32 @@
+name: QuantumVault
+options:
+  bundleIdPrefix: com.aiguru
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+packages:
+  QVaultCrypto:
+    path: ..
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    TARGETED_DEVICE_FAMILY: "1"
+targets:
+  QuantumVault:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+    dependencies:
+      - package: QVaultCrypto
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleDisplayName: Quantum Vault
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        NSFaceIDUsageDescription: Quantum Vault uses Face ID to lock your encrypted vault behind your biometrics.
+        ITSAppUsesNonExemptEncryption: false

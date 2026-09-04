@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		35AE364DE79B7E2C20C4E2B5 /* KeychainVaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F6E9CC4B692C73F7B1BA8E /* KeychainVaultStore.swift */; };
+		4B4BD27A80A8F0CB0AB1FBC3 /* QuantumVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF0367AB9A0E65828906935 /* QuantumVaultApp.swift */; };
+		59827663B137EA1C50E2BACC /* QVaultCrypto in Frameworks */ = {isa = PBXBuildFile; productRef = C71B0A687B5639909C0C4FD4 /* QVaultCrypto */; };
+		6164B42CD56167910868A715 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF1A7BBE82360C41A8D4BDF /* ContentView.swift */; };
+		9791364D918866C085C114F7 /* BiometricGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83059344132AF478816CB199 /* BiometricGate.swift */; };
+		E6C7E421B529597E5323DE8D /* VaultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA8D72C480400987D699D18 /* VaultModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3FA8D72C480400987D699D18 /* VaultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultModel.swift; sourceTree = "<group>"; };
+		48B8BC14D34D6D4B4E33CFD2 /* QuantumVault.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = QuantumVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		83059344132AF478816CB199 /* BiometricGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricGate.swift; sourceTree = "<group>"; };
+		B412CEAE348119161632F2B2 /* QuantumVault-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "QuantumVault-iOS"; path = ..; sourceTree = SOURCE_ROOT; };
+		BDF0367AB9A0E65828906935 /* QuantumVaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantumVaultApp.swift; sourceTree = "<group>"; };
+		BFF1A7BBE82360C41A8D4BDF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C9F6E9CC4B692C73F7B1BA8E /* KeychainVaultStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainVaultStore.swift; sourceTree = "<group>"; };
+		F9DE0EDFD82C20E2F55F7CDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		514C8D17B72F36CA72AF4490 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59827663B137EA1C50E2BACC /* QVaultCrypto in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00C31900A87EB75D3E9B497F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48B8BC14D34D6D4B4E33CFD2 /* QuantumVault.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		30C115E19BE3C223CF102AE4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				83059344132AF478816CB199 /* BiometricGate.swift */,
+				BFF1A7BBE82360C41A8D4BDF /* ContentView.swift */,
+				F9DE0EDFD82C20E2F55F7CDA /* Info.plist */,
+				C9F6E9CC4B692C73F7B1BA8E /* KeychainVaultStore.swift */,
+				BDF0367AB9A0E65828906935 /* QuantumVaultApp.swift */,
+				3FA8D72C480400987D699D18 /* VaultModel.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5929D46E03DAB46C146B4849 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				B412CEAE348119161632F2B2 /* QuantumVault-iOS */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		6B167356D1651107097C2DAC = {
+			isa = PBXGroup;
+			children = (
+				5929D46E03DAB46C146B4849 /* Packages */,
+				30C115E19BE3C223CF102AE4 /* Sources */,
+				00C31900A87EB75D3E9B497F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1400C10116F3F9FB7373DB98 /* QuantumVault */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF7CF512D9109773BF82F7CD /* Build configuration list for PBXNativeTarget "QuantumVault" */;
+			buildPhases = (
+				CFFB5CDBD436C91FD1FA615D /* Sources */,
+				514C8D17B72F36CA72AF4490 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuantumVault;
+			packageProductDependencies = (
+				C71B0A687B5639909C0C4FD4 /* QVaultCrypto */,
+			);
+			productName = QuantumVault;
+			productReference = 48B8BC14D34D6D4B4E33CFD2 /* QuantumVault.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6FCB461872DE0C02C9C1CCF8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 786A9C2F5C710B8C91487242 /* Build configuration list for PBXProject "QuantumVault" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 6B167356D1651107097C2DAC;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				31B926F37B33F5D221205D31 /* XCLocalSwiftPackageReference ".." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 00C31900A87EB75D3E9B497F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1400C10116F3F9FB7373DB98 /* QuantumVault */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFFB5CDBD436C91FD1FA615D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9791364D918866C085C114F7 /* BiometricGate.swift in Sources */,
+				6164B42CD56167910868A715 /* ContentView.swift in Sources */,
+				35AE364DE79B7E2C20C4E2B5 /* KeychainVaultStore.swift in Sources */,
+				4B4BD27A80A8F0CB0AB1FBC3 /* QuantumVaultApp.swift in Sources */,
+				E6C7E421B529597E5323DE8D /* VaultModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0BC9C95612A5C932BBBF8975 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aiguru.QuantumVault;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2EADEAC9A734274CDC1CDCC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EC993255FC5820A3A5D0215D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		EFBC92C643AAB5688E1B3AE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aiguru.QuantumVault;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		786A9C2F5C710B8C91487242 /* Build configuration list for PBXProject "QuantumVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EADEAC9A734274CDC1CDCC2 /* Debug */,
+				EC993255FC5820A3A5D0215D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DF7CF512D9109773BF82F7CD /* Build configuration list for PBXNativeTarget "QuantumVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BC9C95612A5C932BBBF8975 /* Debug */,
+				EFBC92C643AAB5688E1B3AE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		31B926F37B33F5D221205D31 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C71B0A687B5639909C0C4FD4 /* QVaultCrypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QVaultCrypto;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 6FCB461872DE0C02C9C1CCF8 /* Project object */;
+}
