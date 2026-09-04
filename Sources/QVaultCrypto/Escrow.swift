@@ -38,7 +38,7 @@ public enum VaultEscrow {
     public static func export(from vault: HybridPQCrypto, passphrase: String) throws -> Data {
         guard !passphrase.isEmpty else { throw QVaultError.emptyPassphrase }
         let payload = try vault.exportForEscrow() // xPriv(32) ‖ seed(64) ‖ pubMlkem(1184) ‖ pubX25519(32)
-        let argonSalt = PassphraseKDF.newSalt()
+        let argonSalt = try PassphraseKDF.newSalt()
         let kek = try PassphraseKDF.derive(passphrase: passphrase, salt: argonSalt)
         let ct = try AESGCM.encrypt(key: kek, data: payload)
         return Data(magic) + argonSalt + ct

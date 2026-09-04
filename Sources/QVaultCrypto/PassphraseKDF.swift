@@ -11,11 +11,14 @@ public enum PassphraseKDF {
     static let memoryKiB: UInt32 = 64 * 1024
     static let parallelism: UInt32 = 1
 
-    public static func newSalt() -> Data {
+    /// Cryptographically secure 32-byte salt. Throws on entropy-source failure —
+    /// never silently ignored (P1 hardening).
+    public static func newSalt() throws -> Data {
         var bytes = Data(count: saltLen)
-        bytes.withUnsafeMutableBytes {
-            _ = SecRandomCopyBytes(kSecRandomDefault, saltLen, $0.baseAddress!)
+        let rc = bytes.withUnsafeMutableBytes {
+            SecRandomCopyBytes(kSecRandomDefault, saltLen, $0.baseAddress!)
         }
+        guard rc == errSecSuccess else { throw QVaultError.randomGenerationFailed }
         return bytes
     }
 
@@ -59,4 +62,9 @@ public enum QVaultError: Error, Equatable {
     case badEncapsulation
     case cryptoUnderlying(String)
     case vaultKeysMissing
+    case randomGenerationFailed
+    /// Authenticated decryption failed (GCM tag mismatch) — tampered or
+    /// truncated data. Normalized from CryptoKitError so callers only ever
+    /// see QVaultError (P1 hardening: precise error taxonomy).
+    case authenticationFailure
 }
