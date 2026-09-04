@@ -3,6 +3,7 @@ import CryptoKit
 
 /// Single-shot AES-256-GCM helper — byte-compatible with Android HybridPQCrypto.aesGcm():
 /// encrypt → iv(12) ‖ ciphertext ‖ tag(16); decrypt expects the same layout.
+/// Optional AAD support (QVAULT v3 authenticated header).
 enum AESGCM {
     static let ivLen = 12
     static let tagLen = 16
@@ -21,15 +22,18 @@ enum AESGCM {
         try randomBytes(ivLen)
     }
 
-    static func encrypt(key: Data, data: Data) throws -> Data {
+    static func encrypt(key: Data, data: Data, aad: Data? = nil) throws -> Data {
         let iv = try randomIV()
-        let sealed = try AES.GCM.seal(data, using: SymmetricKey(data: key), nonce: AES.GCM.Nonce(data: iv))
+        let sealed = try AES.GCM.seal(
+            data, using: SymmetricKey(data: key), nonce: AES.GCM.Nonce(data: iv),
+            authenticating: aad ?? Data()
+        )
         guard let combined = sealed.combined else { throw QVaultError.cryptoUnderlying("AES-GCM seal failed") }
         // combined = iv ‖ ct ‖ tag — exactly the Android layout
         return combined
     }
 
-    static func decrypt(key: Data, data: Data) throws -> Data {
+    static func decrypt(key: Data, data: Data, aad: Data? = nil) throws -> Data {
         // NOTE: `>=` (not `>`) — AES-GCM legitimately encrypts empty plaintext,
         // producing exactly iv(12) + tag(16) = 28 bytes.
         guard data.count >= ivLen + tagLen else { throw QVaultError.truncatedBlob }
@@ -38,6 +42,9 @@ enum AESGCM {
         let tag = data.suffix(tagLen)
         do {
             let box = try AES.GCM.SealedBox(nonce: AES.GCM.Nonce(data: iv), ciphertext: ct, tag: tag)
+            if let aad {
+                return try AES.GCM.open(box, using: SymmetricKey(data: key), authenticating: aad)
+            }
             return try AES.GCM.open(box, using: SymmetricKey(data: key))
         } catch let e as CryptoKitError {
             // Normalize: callers only ever see QVaultError (precise taxonomy, P1).

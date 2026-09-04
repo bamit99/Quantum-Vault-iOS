@@ -177,3 +177,40 @@ final class HardeningTests: XCTestCase {
         }
     }
 }
+// MARK: - Wrapped-key tampering + tiny-file edges (P2 fuzz expansion)
+
+extension HardeningTests {
+
+    func testV2WrappedDeviceTamperingFallbackBehavior() throws {
+        // Either-factor semantics, tampering edition:
+        // tampered wrappedDevice kills Leg 1; Leg 2 (passphrase) recovers when
+        // the passphrase is correct — on the owning device.
+        let vault = try makeVault()
+        var blob = try vault.encrypt(Data("wrapped-key tamper".utf8), passphrase: "***")
+        blob[HybridPQCrypto.magic.count + 1 + HybridPQCrypto.x25519PubLen
+             + HybridPQCrypto.mlkem768EncapLen + HybridPQCrypto.saltLen] ^= 0x01 // wrappedDevice[0]
+        XCTAssertEqual(try vault.decrypt(blob, passphrase: "***"), Data("wrapped-key tamper".utf8))
+    }
+
+    func testV2WrappedPassTamperingWithForeignKeysFails() throws {
+        // Foreign device keys + tampered wrappedPass + correct passphrase →
+        // Leg 1 fails (foreign keys), Leg 2 fails (tampered) → clean auth failure.
+        let vault = try makeVault()
+        var blob = try vault.encrypt(Data("pass-slot tamper".utf8), passphrase: "***")
+        let argonSaltOff = HybridPQCrypto.magic.count + 1 + HybridPQCrypto.x25519PubLen
+            + HybridPQCrypto.mlkem768EncapLen + HybridPQCrypto.saltLen
+        blob[argonSaltOff + 32 + HybridPQCrypto.wrappedKeyLen] ^= 0x01 // wrappedPass[0]
+        let foreign = try makeVault()
+        XCTAssertThrowsError(try foreign.decrypt(blob, passphrase: "***")) { e in
+            XCTAssertEqual(e as? QVaultError, QVaultError.authenticationFailure)
+        }
+    }
+
+    func testOneBytePlaintextRoundTrip() throws {
+        let vault = try makeVault()
+        let blob = try vault.encrypt(Data("!".utf8))
+        XCTAssertEqual(try vault.decrypt(blob), Data("!".utf8))
+        let v2 = try vault.encrypt(Data("!".utf8), passphrase: "***")
+        XCTAssertEqual(try vault.decrypt(v2, passphrase: "***"), Data("!".utf8))
+    }
+}
