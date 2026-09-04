@@ -1,6 +1,6 @@
 # QVAULT v3 — Authenticated Container Format (Specification)
 
-**Status:** Draft · **Last updated:** 2026-09-04  
+**Status:** Implemented in iOS engine (37/37 tests) · **Last updated:** 2026-09-04  
 **Target:** Quantum Vault iOS (v3 in `HybridPQCrypto.swift`) · Android parity later
 
 ---
@@ -48,7 +48,7 @@ payload       = iv(12) ‖ ct ‖ tag(16)
 | 1251 | 60 | `wrappedPass` | AES-256-GCM(passKek, fileKey) — iv‖ct‖tag |
 | 1311 | — | `payload` | AES-256-GCM(fileKey, data, AAD: version ‖ header) |
 
-**Total header length:** 1311 bytes (v3 vs v2: same `argonSalt` field — v3 always includes it, even when the passphrase is empty, to keep the layout fixed. The passphrase-wrap leg is simply skipped if the passphrase field is absent.)
+**AAD length:** 1191 bytes — everything before the wrapped keys. Total container header (incl. both wrapped keys) is 1311 bytes (v3 vs v2: same `argonSalt` field — v3 always includes it, even when the passphrase is empty, to keep the layout fixed. The passphrase-wrap leg is simply skipped if the passphrase field is absent.)
 
 ---
 
@@ -59,9 +59,14 @@ payload       = iv(12) ‖ ct ‖ tag(16)
 The AAD is the **canonical encoding of header fields** — exactly the bytes that precede the payload in the container:
 
 ```
-AAD = [version(1)] ‖ ephPub(32) ‖ encapsulation(1088) ‖ salt(32)
-      ‖ argonSalt(32) ‖ wrappedDevice(60) ‖ wrappedPass(60)
+AAD = [version(1)] ‖ ephPub(32) ‖ encapsulation(1088) ‖ salt(32) ‖ argonSalt(32)
 ```
+
+**Implementation note (correction):** the wrapped keys are the *outputs* of the
+GCM operations — they cannot be inputs to their own authentication (circular).
+The AAD therefore covers only the non-ciphertext header fields:
+`magic ‖ version ‖ ephPub ‖ encapsulation ‖ salt ‖ argonSalt` = **1191 bytes**,
+`blob.prefix(1191)`, zero-copy from the container.
 
 **Zero-copy invariant:** the AAD is a byte-exact slice of the container from `offset 6` to `offset 1311`. This means the parser can supply the AAD without re-serializing — it's already in the right order on disk.
 
@@ -71,7 +76,7 @@ The AAD is supplied to the **outer AES-GCM decryption that unwraps the file key*
 
 ```
 decrypt_flow(blob):
-    header = blob[6..1311]   ← AAD slice
+    header = blob[6..1191]   ← AAD slice
     payload = blob[1311..]
     
     # Device leg
@@ -152,7 +157,7 @@ func encryptV3(_ data: Data) throws -> Data {
 ```swift
 func decryptV3(_ blob: Data) throws -> Data {
     let container = try parse(blob)  // ByteReader, same as v1/v2
-    let aad = blob.subdata(in: 6..<1311)  // zero-copy slice
+    let aad = blob.prefix(1191)  // zero-copy slice
     // Device leg with AAD:
     let kek = hkdf(...)
     let fileKey = try AES.GCM.open(sealedBox, using: SymmetricKey(data: kek), authenticating: aad)
