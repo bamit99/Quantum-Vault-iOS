@@ -8,6 +8,16 @@ system Files picker into any folder you choose — Google Drive, OneDrive, local
 
 > **Platform:** iOS 26+ (CryptoKit's native ML-KEM requires iOS 26; older versions
 > are not supported by this port).
+
+> **Related projects:** [Quantum-Vault (Android)](https://github.com/bamit99/Quantum-Vault) ·
+> [QuantumVault-Desktop (Windows)](https://github.com/bamit99/QuantumVault-Desktop)
+>
+> **Format dialects:** Android ⇄ iOS share a byte-compatible QVAULT v1/v2 dialect —
+> vault files move between the two mobile apps (see 'Cross-platform compatibility'
+> below). Desktop shares the crypto primitives (ML-KEM-768 + X25519 hybrid, Argon2id,
+> AES-256-GCM) but writes its own container dialect, so vaults are **not**
+> interchangeable between Desktop and mobile today.
+
 > © 2026 [Amit Bhatnagar](https://www.linkedin.com/in/amitxbhatnagar/) — free for
 > personal use; commercial use requires prior permission. See [LICENSE.md](LICENSE.md).
 
@@ -89,7 +99,7 @@ the exact same wire format and KDF parameters as the Android app.
 
 ## Building & testing
 
-**Run the crypto test suite (17 tests):**
+**Run the crypto test suite (37 Swift test functions; not executable in CI — requires macOS/Xcode):**
 
 ```bash
 swift test
